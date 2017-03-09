@@ -1,9 +1,9 @@
 {
-  "name": "Tinify",
+  "name": "EDTinify",
   "version": "1.5.0",
-  "title": "Tinify",
+  "title": "EDTinify",
   "description": ".NET client for the Tinify API. Tinify compresses your images intelligently. Read more at https://tinify.com.",
-  "authors": ["Tinify"],
+  "authors": [ "Tinify" ],
   "packOptions": {
     "tags": [
       "tinify",
@@ -24,9 +24,26 @@
   },
   "supports": {},
   "buildOptions": {
-    "embed": ["data/cacert.pem"]
+    "embed": [ "data/cacert.pem" ],
+    "outputName": "EDTinify"
   },
   "frameworks": {
+    "net451": {
+      "dependencies": {
+        "Newtonsoft.Json": "6.0.6",
+        "System.Net.Http": "4.0.0"
+      }
+    },
+    "net46": {
+      "dependencies": {
+        "Newtonsoft.Json": "6.0.6",
+        "System.Net.Http": "4.3.1",
+        "System.Runtime": "4.0.20.0",
+        "System.Net.Primitives": "4.0.10.0",
+        "System.Text.Encoding": "4.0.10.0",
+        "System.Threading.Tasks": "4.0.10.0"
+      }
+    },
     "netstandard1.3": {
       "dependencies": {
         "NETStandard.Library": "1.6.1",

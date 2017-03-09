@@ -32,7 +32,6 @@ namespace TinifyAPI.Internal
 
                 var name = components[0].Trim();
                 var version = "unknown";
-
                 for (int i = 0; i < components.Length; i++)
                 {
                     var pair = components[i].Split('=');
@@ -43,7 +42,9 @@ namespace TinifyAPI.Internal
                         version = pair[1].Trim().TrimStart('v');
                     }
                 }
-
+#if (NET46 || NET451)
+                return string.Format("{0}/{1} ({2} {3})", name, version, "Windows", "");
+#else
                 var os = "Unknown";
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
@@ -61,6 +62,7 @@ namespace TinifyAPI.Internal
                 var details = RuntimeInformation.FrameworkDescription;
 
                 return string.Format("{0}/{1} ({2} {3})", name, version, os, details);
+#endif
             }
         }
 

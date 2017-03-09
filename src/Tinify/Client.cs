@@ -26,10 +26,15 @@ namespace TinifyAPI
 
         public Client(string key, string appIdentifier = null, string proxy = null)
         {
+#if (NET451)
+            var handler = new HttpClientHandler();
+#else
             var handler = new HttpClientHandler()
             {
                 ServerCertificateCustomValidationCallback = Internal.SSL.ValidationCallback
             };
+#endif
+
 
             if (proxy != null)
             {
